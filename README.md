@@ -15,12 +15,12 @@
 
 3. 将解压出的文件重命名成 `clash`
 
-4. 将 `clash` 移动到 `/use/bin/` 目录下
+4. 将 `clash` 移动到 `/usr/bin/` 目录下
 
 5. 赋予 `clash` 可执行权限
     
     ```bash
-    sudo chmod +x /use/bin/clash
+    sudo chmod +x /usr/bin/clash
     ```
 
 6. 检查 `clash` 是否安装成功
@@ -243,4 +243,35 @@ systemctl start clash@sitoi
 
 ```bash
 systemctl enable clash@user
+```
+
+
+### 问题
+
+权限不足
+
+```bash
+$ sudo systemctl status clash
+
+● clash.service - A rule based proxy in Go for shitao.
+   Loaded: loaded (/usr/lib/systemd/system/clash.service; disabled; vendor preset: disabled)
+   Active: failed (Result: exit-code) since Tue 2019-06-18 17:27:18 CST; 4s ago
+  Process: 6777 ExecStart=/usr/bin/clash (code=exited, status=203/EXEC)
+ Main PID: 6777 (code=exited, status=203/EXEC)
+
+Jun 18 17:27:18 localhost.localdomain systemd[1]: Started A rule based proxy in Go for shitao..
+Jun 18 17:27:18 localhost.localdomain systemd[6777]: clash.service: Failed to execute command: Permission denied
+Jun 18 17:27:18 localhost.localdomain systemd[6777]: clash.service: Failed at step EXEC spawning /usr/bin/clash: Permission denied
+Jun 18 17:27:18 localhost.localdomain systemd[1]: clash.service: Main process exited, code=exited, status=203/EXEC
+Jun 18 17:27:18 localhost.localdomain systemd[1]: clash.service: Failed with result 'exit-code'.
+```
+
+修改 `selinux` 成被动模式
+
+```bash
+sudo vim /etc/sysconfig/selinux
+```
+
+```text
+SELINUX=permissive
 ```
