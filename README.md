@@ -2,7 +2,7 @@
   <img src="https://github.com/Dreamacro/clash/raw/master/docs/logo.png" alt="Clash" width="200">
   <br>Linux Clash 教程<br>
 </h1>
-<h5 align="center",href="https://github.com/Dreamacro/clash">clash 官方地址：https://github.com/Dreamacro/clash</h5>
+<h3 align="center",href="https://github.com/Dreamacro/clash">clash 官方地址：https://github.com/Dreamacro/clash</h3>
 
 
 ## 安装 Clash
